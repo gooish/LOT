@@ -1,4 +1,4 @@
-import harjoitustyo.*;
+import harjoitustyo.ui.*;
 
 /**
  * Oope2HT

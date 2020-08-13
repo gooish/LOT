@@ -1,4 +1,4 @@
-package harjoitustyo;
+package harjoitustyo.shell;
 
 import harjoitustyo.dokumentit.Dokumentti;
 import harjoitustyo.dokumentit.Uutinen;
@@ -99,11 +99,7 @@ public class LOTShell {
      */
     public boolean poista(int poistettava) {
 
-        if (korpus.delet(poistettava)) {
-            return true;
-        } else {
-            return false;
-        }
+        return korpus.delet(poistettava);
     }
 
     /**
@@ -220,7 +216,7 @@ public class LOTShell {
     }
 
     // Lue sulkusanat tiedostosta
-    boolean hankiSulkusanat(String tiedostonNimi) throws FileNotFoundException {
+    public boolean hankiSulkusanat(String tiedostonNimi) throws FileNotFoundException {
         try {
             File tiedosto = new File(tiedostonNimi);
             Scanner tiedLukija = new Scanner(tiedosto);

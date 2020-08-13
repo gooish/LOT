@@ -17,7 +17,7 @@ public class OmaLista<E> extends LinkedList<E> implements Ooperoiva<E> {
 
     @Override
     public void lisää(E uusi) throws IllegalArgumentException {
-        if (uusi instanceof Comparable && uusi != null) {
+        if (uusi instanceof Comparable) {
             boolean onnistuuko = false;
             if (this.size() < 1) {
                 this.add(uusi);
@@ -31,7 +31,7 @@ public class OmaLista<E> extends LinkedList<E> implements Ooperoiva<E> {
                     }
                 }
             }
-            if (onnistuuko == false) {
+            if (!onnistuuko) {
                 this.add(uusi);
             }
         }
@@ -40,9 +40,9 @@ public class OmaLista<E> extends LinkedList<E> implements Ooperoiva<E> {
         }
     }
 
-    private Comparable toComparable(E e) throws IllegalArgumentException {
+    private Comparable<E> toComparable(E e) throws IllegalArgumentException {
         if (e instanceof Comparable) {
-            Comparable ulos = (Comparable) e;
+            Comparable<E> ulos = (Comparable<E>) e;
             return ulos;
         }
         else {

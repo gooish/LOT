@@ -1,7 +1,8 @@
-package harjoitustyo;
+package harjoitustyo.ui;
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import harjoitustyo.shell.LOTShell;
 
 
 
