@@ -19,16 +19,32 @@ import harjoitustyo.omalista.OmaLista;
 public class Kokoelma extends Object implements Kokoava<Dokumentti> {
 
     // attribuutit
+    /**
+     * Dokumentit sisältävä OmaLista
+     */
     private OmaLista<Dokumentti> dokumentit;
 
+    /**
+     * OmaListan palauttava metodi
+     * @return luokan dokumentit-OmaLista
+     */
     public OmaLista<Dokumentti> dokumentit() {
         return dokumentit;
     }
 
+    /** 
+     * Kokoelman rakentaja
+     * 
+     */
     public Kokoelma() {
         dokumentit = new OmaLista<Dokumentti>();
     }
 
+    /**
+     * Dokumentin lisäävä metodi
+     * @param uusi kokoelmaan lisättävä dokumentti
+     * @throws IllegalArgumentException mikäli se ei ole soveltuva
+     */
     public void lisää(Dokumentti uusi) throws IllegalArgumentException {
         if (uusi != null && uusi instanceof Comparable && hae(uusi.tunniste()) == null) {
             dokumentit.lisää(uusi);
@@ -40,6 +56,11 @@ public class Kokoelma extends Object implements Kokoava<Dokumentti> {
 
     }
 
+    /**
+     * Dokumenttia hakeva metodi
+     * @param tunniste haettavan dokumentin tunniste
+     * @return haettava dokumentti tai null
+     */
     @Override
     public Dokumentti hae(int tunniste) {
         for (int i = 0; i < dokumentit.size(); i++) {
@@ -50,6 +71,11 @@ public class Kokoelma extends Object implements Kokoava<Dokumentti> {
         return null;
     }
 
+    /**
+     * Dokumentin poistava metodi
+     * @param tunniste poistettavan dokumentin tunniste
+     * @return true jos onnistui, false jos epäonnistui
+     */
     public boolean delet(int tunniste) {
         for (int i = 0; i < dokumentit.size(); i++) {
             if ((dokumentit.get(i).tunniste() == (tunniste))) {
@@ -59,25 +85,4 @@ public class Kokoelma extends Object implements Kokoava<Dokumentti> {
         }
         return false;
     }
-
-    public boolean teeIdSort() {
-        OmaLista<Dokumentti> valiLista = new OmaLista<Dokumentti>();
-        for (Dokumentti dokumentti : dokumentit) {
-            valiLista.lisää(dokumentti);
-        }
-        dokumentit = valiLista;
-        return true;
-    }
-     
-    /*
-    public boolean teeDateSort() {
-        OmaLista<Dokumentti> valiLista = new OmaLista<Dokumentti>();
-        for (Dokumentti dokumentti : dokumentit) {
-            valiLista.lisääByDate(dokumentti);
-        }
-        dokumentit = valiLista;
-        return true;
-
-    }
-    */
 }

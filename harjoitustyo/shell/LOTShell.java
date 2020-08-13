@@ -25,9 +25,16 @@ import java.time.LocalDate;
 public class LOTShell {
 
     // luodaan luokkamuuttujat
+
+    /**Kokoelma, jonne vitsit menevät */
     private Kokoelma korpus = new Kokoelma();
+
+    /** LinkedList, jonne sulkusanat menevät */
     private LinkedList<String> sulkusanat = new LinkedList<String>();
+
     Scanner input = new Scanner(System.in);
+
+    /** Dokumentin tyyppiä kuvaava muuttuja */
     private static int dokTyyppi = 0;
 
     /*
@@ -134,6 +141,12 @@ public class LOTShell {
 
     }
 
+
+    /**
+     * Poista korpuksesta dokumentti
+     * @param tunniste poistettavan tunniste
+     * @return onnistuiko
+     */
     public boolean freqs(int tunniste) {
         for (int i = 0; i < korpus.dokumentit().size(); i++) {
             if ((korpus.dokumentit().get(i).tunniste() == (tunniste))) {
@@ -144,18 +157,34 @@ public class LOTShell {
         return false;
     }
 
+    /**
+     * Stubattu
+     * @param rivinPituus
+     * @return
+     */
     // TODO: toteuta prettyprinttaus
     public boolean pprint(int rivinPituus) {
         System.out.println("prettyprintataan");
         return false;
     }
 
+
+    /**
+     * Stubattu
+     * @param sortType
+     * @return
+     */
     // TODO: toteuta kokoelman jarkkays
     public boolean sorttaa(String sortType) {
         System.out.println("sortataan");
         return true;
     }
 
+
+    /**
+     * Printtaa kaikki dokumentit
+     * @return onnistuiko
+     */
     public boolean printAll() {
         for (Dokumentti i : korpus.dokumentit()) {
             System.out.println(i);
@@ -170,6 +199,13 @@ public class LOTShell {
      */
 
     // lataa tiedostosta dokumentit korpukseen
+
+    /**
+     * Tiedoston avaava metodi
+     * @param tiedNimi halutun tiedoston tiedostonimi levyllä
+     * @return onnistuiko
+     * @throws FileNotFoundException mikäli tiedostoa ei löydy
+     */
     public boolean lataa(String tiedNimi) throws FileNotFoundException {
         try {
             File tiedosto = new File(tiedNimi);
@@ -188,6 +224,13 @@ public class LOTShell {
     }
 
     // Luo rivista olio, tyypista riippuen joko uutinen tai vitsi
+
+    /**
+     * Paloittelee rivin olioksi
+     * @param rivi haluttava String-muotoinen tekstinpätkä
+     * @return Tämä tekstinpätkä oliona
+     * @throws IllegalArgumentException mikäli muunnos ei onnistu
+     */
     static Dokumentti teeOlio(String rivi) throws IllegalArgumentException {
         String[] ominaisuudet = rivi.split("///");
         String[] pvmTaiID = ominaisuudet[1].split("\\.");
@@ -216,6 +259,13 @@ public class LOTShell {
     }
 
     // Lue sulkusanat tiedostosta
+
+    /**
+     * Sulkusanat hakeva metodi
+     * @param tiedostonNimi haettavan tiedoston nimi levyllä
+     * @return Onnistuiko
+     * @throws FileNotFoundException mikäli tiedostoa ei löydy
+     */
     public boolean hankiSulkusanat(String tiedostonNimi) throws FileNotFoundException {
         try {
             File tiedosto = new File(tiedostonNimi);

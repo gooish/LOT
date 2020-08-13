@@ -30,6 +30,7 @@ public class TekstiUI {
     final String PRETTYPRINT = "pprint";
     final String ECHO = "echo";
     final String EXIT = "quit";
+    final String ERROR = "Error!";
 
 
 
@@ -39,6 +40,11 @@ public class TekstiUI {
 
     Scanner input = new Scanner(System.in);
 
+    /**
+     * Rakentaja TekstiUI -oliolle
+     * @param newArgs tekstiUI:n argumentit
+     * @throws IllegalArgumentException mikäli argumentteja on liian vähän tai paljon
+     */
     public TekstiUI(String[] newArgs) throws IllegalArgumentException {
         if (newArgs.length == 2) {
             args = newArgs;
@@ -51,6 +57,9 @@ public class TekstiUI {
     }
 
 
+    /**
+     * Ohjelman pääsilmukka
+     */
     public void start() {
         System.out.println("Welcome to L.O.T.");
         String syote;
@@ -89,7 +98,7 @@ public class TekstiUI {
                             kuori.printAll();
                         }
                         else {
-                            System.out.println("Error!");
+                            System.out.println(ERROR);
                         }
                         break;
 
@@ -98,7 +107,7 @@ public class TekstiUI {
                             kuori.lisaa(syote.substring(4));
                         }
                         else {
-                            System.out.println("Error!");
+                            System.out.println(ERROR);
                         }
                         break;
 
@@ -108,18 +117,18 @@ public class TekstiUI {
                             kuori.etsi(etsittavat);
                         }
                         else {
-                            System.out.println("Error!");
+                            System.out.println(ERROR);
                         }
                         break;
 
                     case REMOVE:
                         if (komento.length == 2) {
                             if(!kuori.freqs(Integer.parseInt(komento[1]))) {
-                                System.out.println("Error!");
+                                System.out.println(ERROR);
                             }
                         }
                         else {
-                            System.out.println("Error!");
+                            System.out.println(ERROR);
                         }
                         break;
 
@@ -128,7 +137,7 @@ public class TekstiUI {
                             kuori.suodata(komento[1]);
                         }
                         else {
-                            System.out.println("Error!");
+                            System.out.println(ERROR);
                         }
                         break;
 
@@ -158,12 +167,12 @@ public class TekstiUI {
                         break;
 
                     default:
-                        System.out.println("Error!");
+                        System.out.println(ERROR);
                         break;
                 }
             }
             catch (IllegalArgumentException e) {
-                System.out.println("Error!");
+                System.out.println(ERROR);
             }
         }
 

@@ -42,10 +42,18 @@ public abstract class Dokumentti<E> implements Comparable<Dokumentti>, Tietoinen
         }
     }
 
+    /** Tunnisteen palauttava metodi
+     * @return dokumentin tunniste
+     */
     public int tunniste() {
         return tunniste;
     }
 
+    /**
+ * Tekstin asettava metodi
+ * @param uusiTeksti teksti, joka annetaan
+ * @throws IllegalArgumentException jos teksti on liian lyhyt
+ */
     public void teksti(String uusiTeksti) throws IllegalArgumentException {
         if (uusiTeksti != null && uusiTeksti.length() > 0) {
             teksti = uusiTeksti;
@@ -53,7 +61,9 @@ public abstract class Dokumentti<E> implements Comparable<Dokumentti>, Tietoinen
             throw new IllegalArgumentException();
         }
     }
-
+    /** Tekstin palauttava metodi
+     * @return dokumentin Teksti
+     */
     public String teksti() {
         return teksti;
     }
@@ -66,7 +76,11 @@ public abstract class Dokumentti<E> implements Comparable<Dokumentti>, Tietoinen
         teksti(uusiTeksti);
     }
 
-    // korvaukset
+    
+    /** Dokumentin equals-metodi, tarkistaa onko kaksi dokumenttia samat
+     * @return true jos ovat, false jos eivät
+     * 
+     */
 
     @Override
     public boolean equals(Object o) {
@@ -82,10 +96,21 @@ public abstract class Dokumentti<E> implements Comparable<Dokumentti>, Tietoinen
         return false;
     }
 
+
+    /** Implementoitu toString -metodi
+     * kertoo, miten tulostaa dokumentti.'
+     * @return dokumentin String -esitys
+     */
     @Override
     public String toString() {
         return (tunniste + "///" + teksti);
     }
+
+    /** implementoitu compareTo -metodi
+     * kertoo, tulisiko dokumentin tulla ennen vai jälkeen toista järjestyksessä.
+     * @return suuruusarvo
+     */
+
 
     @Override
     public int compareTo(Dokumentti that) {

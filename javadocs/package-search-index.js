@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"harjoitustyo.apulaiset"},{"l":"harjoitustyo.dokumentit"},{"l":"harjoitustyo.kokoelma"},{"l":"harjoitustyo.omalista"},{"l":"harjoitustyo.shell"},{"l":"harjoitustyo.ui"}]

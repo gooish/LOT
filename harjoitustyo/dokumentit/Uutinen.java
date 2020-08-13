@@ -19,6 +19,13 @@ public class Uutinen<E> extends Dokumentti<E> {
 
     // rakentaja
 
+    /**
+     * Rakentaja uutiselle
+     * @param uusiTunniste uutiselle haluttava tunniste
+     * @param uusiPva uutiselle haluttava päivämäärä
+     * @param uusiUutinen uutiselle haluttava teksti
+     * @throws IllegalArgumentException jos mikä tahansa asetusmetodi epäonnistuu
+     */
     public Uutinen (int uusiTunniste, LocalDate uusiPva, String uusiUutinen) throws IllegalArgumentException {
         tunniste(uusiTunniste);
         päivämäärä(uusiPva);
@@ -26,6 +33,11 @@ public class Uutinen<E> extends Dokumentti<E> {
 
     }
 
+    /**
+     * Asettaa uuden päivämäärän
+     * @param uusiPvm uusi haluttava päivämäärä
+     * @throws IllegalArgumentException mikäli päivämäärä on null
+     */
     public void päivämäärä(LocalDate uusiPvm) throws IllegalArgumentException {
         if (uusiPvm != null) {
             päivämäärä = uusiPvm;
@@ -35,11 +47,20 @@ public class Uutinen<E> extends Dokumentti<E> {
         }
     }
 
+    /**
+     * päivämäärän hakeva metodi
+     * @return uutisen päivämäärän
+     */
     public LocalDate päivämäärä() {
     
         return päivämäärä;
 
     }
+
+    /** 
+     * uutisen String esityksen palauttava metodi
+     * @return Uutisen string-esitys
+     */
     @Override
     public String toString() {
         DateTimeFormatter formatoija = DateTimeFormatter.ofPattern("d.M.YYYY"); 
